@@ -1,0 +1,77 @@
+local FESword = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local on = Instance.new("TextButton")
+local off = Instance.new("TextButton")
+local loop = Instance.new("TextBox")
+
+FESword.Name = "FESword"
+FESword.Parent = game.CoreGui
+FESword.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+main.Name = "main"
+main.Parent = FESword
+main.Active = true
+main.Draggable = true
+main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+main.BorderColor3 = Color3.fromRGB(255, 255, 255)
+main.Position = UDim2.new(0.496253133, 0, 0.374692887, 0)
+main.Size = UDim2.new(0, 180, 0, 72)
+
+on.Name = "on"
+on.Parent = main
+on.BackgroundColor3 = Color3.fromRGB(206, 255, 211)
+on.BorderColor3 = Color3.fromRGB(255, 255, 255)
+on.Position = UDim2.new(0.205555558, 0, 0.444444448, 0)
+on.Size = UDim2.new(0, 41, 0, 18)
+on.Font = Enum.Font.SourceSans
+on.Text = "ON"
+on.TextColor3 = Color3.fromRGB(0, 0, 0)
+on.TextSize = 14.000
+
+off.Name = "off"
+off.Parent = main
+off.BackgroundColor3 = Color3.fromRGB(254, 177, 173)
+off.BorderColor3 = Color3.fromRGB(255, 255, 255)
+off.Position = UDim2.new(0.611111104, 0, 0.444444418, 0)
+off.Size = UDim2.new(0, 42, 0, 18)
+off.Font = Enum.Font.SourceSans
+off.Text = "OFF"
+off.TextColor3 = Color3.fromRGB(0, 0, 0)
+off.TextSize = 14.000
+
+loop.Name = "loop"
+loop.Parent = main
+loop.BackgroundColor3 = Color3.fromRGB(213, 238, 255)
+loop.Position = UDim2.new(0.305555552, 0, 0.0972222239, 0)
+loop.Size = UDim2.new(0, 70, 0, 16)
+loop.Font = Enum.Font.SourceSans
+loop.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+loop.PlaceholderText = "AMOUNT:"
+loop.Text = ""
+loop.TextColor3 = Color3.fromRGB(0, 0, 0)
+loop.TextSize = 14.000
+
+on.MouseButton1Click:Connect(function()
+    local tools = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass'Tool'
+    local time = loop.Text
+
+    _G.LOOPS = true
+    while _G.LOOPS == true do
+    task.wait(time)
+    tools.Parent = game.Players.LocalPlayer.Character
+    task.wait(time)
+    tools.Parent = game.Players.LocalPlayer.Backpack
+    task.wait(time)
+    tools.GripPos = Vector3.new(0, 0, 250)
+    task.wait(time)
+    tools.GripPos = Vector3.new(0, 0, 250)
+    task.wait(time)
+    tools.GripPos = Vector3.new(0, 0, -1.7)
+    task.wait(time)
+    tools.GripPos = Vector3.new(0, 0, -1.7)
+    end
+end)
+
+off.MouseButton1Click:Connect(function()
+    _G.LOOPS = false
+end)
